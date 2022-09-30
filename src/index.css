@@ -1,0 +1,9 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  background: linear-gradient(89deg,  #F5CDDE, #FFDAF5, #B0E1FF, #BEFCFF);
+}

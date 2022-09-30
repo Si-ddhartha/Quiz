@@ -1,0 +1,30 @@
+.question-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-answers{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.default-button{
+    border: 1px solid #6D5B87 ;
+    box-shadow: 5px 0px 12px #6D5B87 ;
+    border-radius: 10px;
+    background-color: rgba(188, 150, 230, 0.5);
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.default-button:disabled{
+    color: black;
+}
+
+@media screen and (max-width: 700px) {
+    .question-answers{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
