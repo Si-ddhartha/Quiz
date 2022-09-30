@@ -13,15 +13,22 @@ export default function Questions(){
     React.useEffect(function(){
         fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
             .then(res => res.json())
-            .then(data => setQuizData(data.results))
+            .then(data => setQuizData(data.results.map(result => ({
+                question: result.question,
+                correct_answer: result.correct_answer,
+                randomized_answers: shuffleArray([...result.incorrect_answers, result.correct_answer])
+                }))))
     }, [])
-    // console.log(quizdata)
+    
+    function shuffleArray(array) {
+        return [...array].sort(() => 0.5 - Math.random())
+    }
 
     const questions = quizdata.map((data) => {
                                 return <Question 
                                             key={data.question}
                                             question={data.question}
-                                            answers={[...data.incorrect_answers, data.correct_answer]}
+                                            answers={data.randomized_answers}
                                             correct_answer={data.correct_answer}
                                             setScore={setScore}
                                             setDisableCheckButton={setDisableCheckButton}
